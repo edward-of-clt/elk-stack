@@ -14,11 +14,13 @@
 vagrant up
 ```
 
+> The `all.yml` playbook will cycle through the `docker.yml`, `elastic.yml`, `logstash.yml`, and `kibana.yml` plays.
+
 ```shell
 ansible-playbook -i playbooks/tmp_inv/ playbooks/all.yml
 ```
+> Note: After running `all.yml` it may take a few minutes for Kibana to respond.
 
-> The `all.yml` playbook will cycle through the `docker.yml`, `elastic.yml`, `logstash.yml`, and `kibana.yml` plays.
 
 ## Destroy Cluster
 
