@@ -1,0 +1,29 @@
+---
+
+- name: Install Necessary Packages
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: Is docker-ce repo installed yet?
+  stat:
+    path: /etc/yum.repos.d/docker-ce.repo
+  register: repo
+  changed_when: repo.stat.exists != true
+
+- name: Add docker-ce repo
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  when: repo.stat.exists != true
+
+- name: Install docker-ce
+  yum:
+    name: docker-ce
+
+- name: Start and enable Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes

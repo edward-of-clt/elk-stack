@@ -1,0 +1,8 @@
+- name: Check swarm status
+  shell: "docker info | grep -i swarm | awk -F ': ' '{print $2}'"
+  register: swarm_mode
+  changed_when: swarm_mode.stdout != "active"
+
+- name: Join swarm
+  shell: "{{ hostvars.localhost.manager_token }}"
+  when: swarm_mode.stdout != "active"

@@ -1,0 +1,11 @@
+---
+
+- copy:
+    src: ~/.ssh/id_rsa.pub
+    dest: ~/.ssh/id_rsa.pub
+    owner: vagrant
+    group: vagrant
+
+- lineinfile:
+    line: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    path: ~/.ssh/authorized_keys

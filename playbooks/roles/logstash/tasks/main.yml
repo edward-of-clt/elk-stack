@@ -1,0 +1,1 @@
+- include_tasks: ./launch_logstash.yml

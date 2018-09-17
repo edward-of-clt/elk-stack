@@ -1,0 +1,7 @@
+---
+- name: Install Logstash
+  hosts: logstash
+  become: yes
+  roles:
+    - swarm_init
+    - logstash

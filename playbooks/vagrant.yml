@@ -1,0 +1,5 @@
+- name: Add my key
+  hosts: all
+  roles:
+    - add_my_key
+    - disable_firewalld

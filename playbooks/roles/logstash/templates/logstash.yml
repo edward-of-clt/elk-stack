@@ -1,0 +1,2 @@
+http.host: "0.0.0.0"
+xpack.monitoring.elasticsearch.url: ["http://{{ groups['elastic'] | map('extract', hostvars, ['ansible_host']) | join(':9200","http://') }}:9200"]

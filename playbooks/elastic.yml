@@ -1,0 +1,7 @@
+---
+- name: Install Elastic
+  hosts: elastic
+  become: yes
+  roles:
+    - swarm_init
+    - elastic

@@ -1,0 +1,28 @@
+- name: Check swarm status
+  shell: "docker info | grep -i swarm | awk -F ': ' '{print $2}'"
+  register: swarm_mode
+  changed_when: swarm_mode.stdout != "active"
+
+- name: Initialize Docker Swarm
+  shell: "docker swarm init --advertise-addr {{ ansible_host }}"
+  register: response
+  when: swarm_mode.stdout != "active"
+
+- name: Get manager join tokens
+  shell: docker swarm join-token manager | grep 'docker swarm join'
+  register: manager_token
+  changed_when: "'docker swarm' not in manager_token.stdout"
+  failed_when: "'docker swarm' not in manager_token.stdout"
+
+- name: Get worker join tokens
+  shell: docker swarm join-token worker | grep 'docker swarm join'
+  register: worker_token
+  changed_when: "'docker swarm' not in worker_token.stdout"
+  failed_when: "'docker swarm' not in worker_token.stdout"
+
+- name: Save the tokens for later
+  set_fact:
+    worker_token: "{{ worker_token.stdout }}"
+    manager_token: "{{ manager_token.stdout }}"
+  delegate_facts: yes
+  delegate_to: localhost

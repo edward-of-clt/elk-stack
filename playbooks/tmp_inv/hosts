@@ -1,0 +1,24 @@
+[elk:children]
+elastic
+logstash
+kibana
+queue
+webserver
+
+[elastic]
+elastic01.edward-of-clt.com ansible_host=192.168.33.2
+elastic02.edward-of-clt.com ansible_host=192.168.33.12
+elastic03.edward-of-clt.com ansible_host=192.168.33.22
+
+[logstash]
+logstash01.edward-of-clt.com ansible_host=192.168.33.3
+
+[kibana]
+kibana01.edward-of-clt.com ansible_host=192.168.33.4
+kibana02.edward-of-clt.com ansible_host=192.168.33.14
+
+[queue]
+queue01.edward-of-clt.com ansible_host=192.168.33.5
+
+[webserver]
+webserver.edward-of-clt.com ansible_host=192.168.33.6

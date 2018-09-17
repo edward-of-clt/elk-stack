@@ -1,0 +1,17 @@
+---
+
+- copy:
+    src: ./files/docker-compose.yml
+    dest: /root/docker-compose.yml
+
+- template:
+    src: ./templates/logstash.yml
+    dest: /root/logstash.yml
+
+- synchronize:
+    src: ./files/pipelines
+    dest: /root/
+
+- shell: docker stack deploy -c /root/docker-compose.yml logstash
+
+- shell: docker service update --force -d logstash_logstash

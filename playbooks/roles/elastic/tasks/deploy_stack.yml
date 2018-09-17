@@ -1,0 +1,9 @@
+---
+
+- copy:
+    src: ./files/docker-compose.yml
+    dest: /root/docker-compose.yml
+  run_once: yes
+
+- shell: docker stack deploy -c /root/docker-compose.yml elastic
+  run_once: yes

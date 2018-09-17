@@ -1,0 +1,13 @@
+---
+
+- template:
+    src: ./templates/kibana.yml
+    dest: /root/kibana.yml
+
+- copy:
+    src: ./files/docker-compose.yml
+    dest: /root/docker-compose.yml
+  run_once: yes
+
+- shell: docker stack deploy -c /root/docker-compose.yml kibana
+  run_once: yes

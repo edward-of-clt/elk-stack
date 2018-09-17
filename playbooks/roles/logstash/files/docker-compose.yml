@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  logstash:
+    image: docker.elastic.co/logstash/logstash:6.4.0
+    ports:
+      - 5044:5044
+    volumes:
+      - ./pipelines:/usr/share/logstash/pipeline
+      - /root/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    environment:
+      LS_JAVA_OPTS: "-Xmx1000m -Xms1000m"
+    deploy:
+      mode: global

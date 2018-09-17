@@ -1,0 +1,7 @@
+---
+- name: Install Elastic
+  hosts: kibana
+  become: yes
+  roles:
+    - swarm_init
+    - kibana
