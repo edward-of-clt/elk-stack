@@ -12,6 +12,10 @@
     src: ./files/pipelines
     dest: /root/
 
+- template:
+    src: ./templates/logstash.conf
+    dest: /root/pipelines/logstash.conf
+
 - shell: docker stack deploy -c /root/docker-compose.yml logstash
 
 - shell: docker service update --force -d logstash_logstash

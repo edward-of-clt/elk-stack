@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "kibana" do |kibana|
+  config.vm.define "kibana1" do |kibana|
     kibana.vm.box = "centos/7"
     kibana.vm.network "private_network", ip: "192.168.33.4"
     kibana.vm.provision "ansible" do |ansible|
@@ -47,27 +47,27 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "kibana2" do |kibana|
-    kibana.vm.box = "centos/7"
-    kibana.vm.network "private_network", ip: "192.168.33.14"
-    kibana.vm.provision "ansible" do |ansible|
-      ansible.playbook = "playbooks/vagrant.yml"
-    end
-  end
+  # config.vm.define "kibana2" do |kibana|
+  #   kibana.vm.box = "centos/7"
+  #   kibana.vm.network "private_network", ip: "192.168.33.14"
+  #   kibana.vm.provision "ansible" do |ansible|
+  #     ansible.playbook = "playbooks/vagrant.yml"
+  #   end
+  # end
 
-  config.vm.define "queue" do |queue|
-    queue.vm.box = "centos/7"
-    queue.vm.network "private_network", ip: "192.168.33.5"
-    queue.vm.provision "ansible" do |ansible|
-      ansible.playbook = "playbooks/vagrant.yml"
-    end
-  end
+  # config.vm.define "queue" do |queue|
+  #   queue.vm.box = "centos/7"
+  #   queue.vm.network "private_network", ip: "192.168.33.5"
+  #   queue.vm.provision "ansible" do |ansible|
+  #     ansible.playbook = "playbooks/vagrant.yml"
+  #   end
+  # end
 
-  config.vm.define "webserver" do |webserver|
-    webserver.vm.box = "centos/7"
-    webserver.vm.network "private_network", ip: "192.168.33.6"
-    webserver.vm.provision "ansible" do |ansible|
-      ansible.playbook = "playbooks/vagrant.yml"
-    end
-  end
+  # config.vm.define "webserver" do |webserver|
+  #   webserver.vm.box = "centos/7"
+  #   webserver.vm.network "private_network", ip: "192.168.33.6"
+  #   webserver.vm.provision "ansible" do |ansible|
+  #     ansible.playbook = "playbooks/vagrant.yml"
+  #   end
+  # end
 end

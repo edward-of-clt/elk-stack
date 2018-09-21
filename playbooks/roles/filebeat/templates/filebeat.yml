@@ -1,0 +1,12 @@
+
+
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/httpd/access_log
+    - /var/log/httpd/error_log
+
+output.logstash:
+  hosts: ["{{ groups['logstash'] | map('extract', hostvars, ['ansible_host']) | join(':5044","') }}:5044"]
+  index: apache_test

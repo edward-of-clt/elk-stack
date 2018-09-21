@@ -1,0 +1,6 @@
+- name: Install, Run Apache and Install, Run Filebeat
+  hosts: webserver
+  become: yes
+  roles:
+    - install_httpd
+    - filebeat

@@ -1,6 +1,6 @@
 ---
 
-- name: Install Docker on All
+- name: Get hosts ready
   hosts: all
   become: yes
   roles:

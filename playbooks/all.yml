@@ -3,3 +3,4 @@
 - import_playbook: elastic.yml
 - import_playbook: logstash.yml
 - import_playbook: kibana.yml
+- import_playbook: webserver.yml

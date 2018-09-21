@@ -15,10 +15,10 @@ logstash01.example.com ansible_host=192.168.33.3
 
 [kibana]
 kibana01.example.com ansible_host=192.168.33.4
-kibana02.example.com ansible_host=192.168.33.14
+# kibana02.example.com ansible_host=192.168.33.14
 
 [queue]
-queue01.example.com ansible_host=192.168.33.5
+# queue01.example.com ansible_host=192.168.33.5
 
 [webserver]
-webserver.example.com ansible_host=192.168.33.6
+# webserver.example.com ansible_host=192.168.33.6
