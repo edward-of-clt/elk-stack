@@ -10,6 +10,8 @@
 
 ## Spin Up Your Cluster
 
+> Before running vagrant up, ensure you have a SSH key located at ~/.ssh/id_rsa
+
 ```shell
 vagrant up
 ```
